@@ -3,6 +3,7 @@
 ## For Products Addition and Show
 ### Addition
 End Point GET
+
 `/product/add`
 
 Required
@@ -18,6 +19,7 @@ Required
 
 ### Show all Products
 End Point GET 
+
 `/product/all`
 
 Required
@@ -28,6 +30,7 @@ Return
 
 ### Show all Products
 End Point GET 
+
 `/product/:token`
 
 `token: code attached with the product`
@@ -41,6 +44,7 @@ Return
 ## For User Login and Register
 ### Register
 End Point GET
+
 `/users/register`
 
 Required
@@ -57,9 +61,8 @@ The User will be registered in database with this end point. User will be assign
 
 ### Login
 End Point GET
+
 `/users/login`
-
-
 
 Required
 ```
@@ -100,4 +103,30 @@ Require
 
 ### All Products in Cart
 End Point GET 
+
+`/cart/utoken/all`
+
+Require 
+`utoken: Access token assigned to a user`
+
+Return
+
+`JSON data of all products in the cart`
+
+### Checkout
+End Point GET
+
+`/cart/utoken/checkout`
+
+Require 
+
+`utoken: Access token assigned to a user`
+
+Return 
+
+```
+{ 
+ price: total_price,
+  prouduct: Array_of_Products_in_cart
+}
 `
