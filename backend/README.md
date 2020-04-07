@@ -1,7 +1,7 @@
 # APIs for Backend 
 
 ## For Products Addition and Show
-### Addition
+### Addition of Product
 End Point GET
 
 `/product/add`
