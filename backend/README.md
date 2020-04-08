@@ -23,6 +23,7 @@ End Point GET
 `/product/all`
 
 Required
+
 `Nothing`
 
 Return 
@@ -36,9 +37,11 @@ End Point GET
 `token: code attached with the product`
 
 Required
+
 `Nothing`
 
 Return 
+
 `JSON data of the products`
 
 ## For User Login and Register
@@ -72,6 +75,7 @@ Required
 }
 ```
 Return JSON
+
 ```
 {
   accessToken: accessToken
@@ -97,6 +101,7 @@ End Point GET
 `/cart/utoken/product/remove/ptoken`
 
 Require
+
 `utoken: Access token assigned to a user.`
 
 `ptoken: code attached with the product`
@@ -107,6 +112,7 @@ End Point GET
 `/cart/utoken/all`
 
 Require 
+
 `utoken: Access token assigned to a user`
 
 Return
