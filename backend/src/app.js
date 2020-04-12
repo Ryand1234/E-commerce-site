@@ -8,6 +8,7 @@ var mongoose = require('mongoose');
 var productRouter = require('./routes/product');
 var usersRouter = require('./routes/users');
 var cartRouter = require('./routes/user_cart');
+var data = require('./routes/database');
 
 var app = express();
 
@@ -24,10 +25,21 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/product', productRouter);
 app.use('/users', usersRouter);
 app.use('/cart', cartRouter);
+app.use('/show',data);
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://localhost:5000/ecommerce",{ useUnifiedTopology: true, useNewUrlParser: true}, (err,db)=>{
+	if(err){
+		console.log("ERROR: ",err);
+	}else{
+		console.log("CONNECTED");
+		console.log(db.readyState);
+		db.close();
+		}
+	});
 
-mongoose.connect("mongodb://localhost:5000/ecommerce",  { useUnifiedTopology: true, useNewUrlParser: true }, () => {
-   console.log('mongodb connected');
- });
+var db = mongoose.connection;
+
+db.on('error.name', console.error.bind(console.name, 'Mongodb connection error'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -39,7 +51,8 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
+  console.log("Message: ",err.message);
+  console.log("ERROR: ",res.locals.error);
   // render the error page
   res.status(err.status || 500);
   res.render('error');

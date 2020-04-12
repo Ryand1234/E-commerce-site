@@ -1,9 +1,12 @@
 var express = require('express');
 var router = express.Router();
+var mongoose = require('mongoose')
 var {check, validationResult} = require('express-validator');
-var {User, product} = require("../config/User.js");
+var {User, product, userschema} = require("../config/User.js");
+var mongo = require('mongodb');
+var bodyParser = require('body-parser');
 
-router.get('/register',
+router.post('/register', bodyParser.json(), 
 [
   check('username').isLength({min: 3}),
   check('email').isLength({min: 1}).isEmail(),
@@ -24,15 +27,16 @@ router.get('/register',
 	{
 		var exist = true;
 		var total_token = 0;
-		var new_token = Math.floor(Math.random()*10000);
+		var new_token = Math.floor(Math.random()*5);
 		console.log("token: "+ new_token);
 		
-		while(exist){
-			if(total_token>10000)
+		//while(exist){
+			console.log("EXIST: ",exist);
+	/*		if(total_token>5)
 			{
 				res.status(301).send("Database Full");
-				break;
-			}
+			//	break;
+			}*/
 		nuserinfo = {}
 		nuserinfo.accessToken = new_token;
 		nuserinfo.username = req.body.username;
@@ -41,21 +45,37 @@ router.get('/register',
 		nuserinfo.number = req.body.number;
 		console.log(nuserinfo);
 
-		var newuser = new User(nuserinfo);
-		console.log(newuser);
-		try{
-			    const saveduser = await newuser.save();
-			    exist=false;
-				res.status(200);
-  				res.send('User Registered');
-  			}catch(err){
-				console.log(err);
-				new_token = Math.floor(Math.random()*3);
-				total_token += 1;
-			}
+		mongo.MongoClient.connect('mongodb://localhost:5000',(error, client)=>{
+			if(error) throw(error)
 
-		
-		}
+			console.log("HELLO");
+			var db = client.db('ecommerce');
+	//		while(exist){
+			
+				db.collection('users').findOne({'accessToken': new_token}, (nerror, result)=>{
+						if(result){
+							new_token = Math.floor(Math.random()*5);
+							total_token += 1;
+							res.status(301).json({'msg': 'Internal Server Error Occured!!!'})
+						} else {
+							db.collection('users').insertOne(nuserinfo, (err, record)=>{
+
+								if(err){
+										res.status(301).json({'msg': 'Internal Server Error Occured!!!'})
+										
+										} else {
+										 	exist=false;
+											res.status(200).json({'msg': 'User Registered'});
+											}
+							});
+						}
+				});
+
+		//	}
+
+			});
+
+		//}
 	}
 	
 
@@ -70,11 +90,11 @@ router.get('/login', async (req, res, next)=> {
 		if(err)
 		{
 			console.log(err);
-			res.status(401).json("Email/Password is incorrect");
+			res.status(401).json({'msg': "Email/Password is incorrect"});
 		}
 		else
 		{
-			res.status(200).json(user.accessToken);
+			res.status(200).json({'token': user.accessToken});
 		}
 	});
 });

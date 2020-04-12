@@ -60,12 +60,14 @@ const userSchema = new mongoose.Schema({
 		productname: [String],
 		productdetail: [productSchema]
 	}
-});
+}, 
+	{collection: 'users'});
 
 
 const User = mongoose.model("User", userSchema);
 
 module.exports = {
 	product:product,
-	User:User
+	User:User,
+	userschema:userSchema
 }
