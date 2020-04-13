@@ -18,7 +18,9 @@ import { ProductsComponent } from './products/products.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms'
+import { ReactiveFormsModule } from '@angular/forms';
+import { AddComponent } from './products/add/add.component';
+import { SearchComponent } from './products/search/search.component'
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { ReactiveFormsModule } from '@angular/forms'
     ProfileComponent,
     LoginComponent,
     RegisterComponent,
-    ProductsComponent
+    ProductsComponent,
+    AddComponent,
+    SearchComponent
   ],
   imports: [
     HttpClientModule,

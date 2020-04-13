@@ -4,7 +4,7 @@ var mongodb = require('mongodb');
 mongodb.MongoClient.connect('mongodb://localhost:5000');
 
 
-router.get('/view-feedbacks',  function(req, res) {
+router.get('/',  function(req, res) {
 	mongodb.MongoClient.connect('mongodb://localhost:5000', (err, client)=>{
 	if(err) throw(err);	
 	var dbcheck = client.db('ecommerce');

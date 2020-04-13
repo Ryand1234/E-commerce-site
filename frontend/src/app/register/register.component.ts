@@ -27,7 +27,7 @@ export class RegisterComponent{
 		console.log(this.person.controls.email.value);
 		var user = new Person(this.person.controls.username.value, this.person.controls.email.value, this.person.controls.number.value, this.person.controls.password.value);
 		console.log("PERSON: ",user);
-		this.service.register(user).subscribe((msg: any) => {	this.status = msg},(err) => { console.log('error is: ',err)});
+		this.service.register(user).subscribe((msg: any) => {	this.status = (typeof msg)},(err) => { console.log('error is: ',err)});
 		console.log("MESSAGE: ",this.status);	
 }
 

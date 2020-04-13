@@ -3,15 +3,13 @@ version: "3.0"
 services: 
   server:
     build: ./backend
-    volumes: 
-      - ./backend:/usr/app/
-      - /usr/app/node_modules
     ports:
       - 3000:3000
-    links:
+    depends_on:
       - database
 
   database:
     image: mongo
+    command: mongod --port 5000 --bind_ip_all
     ports:
-      - 5000:5000
+      - 27017:5000

@@ -1,10 +1,9 @@
 FROM node:10.19.0-alpine
-RUN mkdir -p /usr/app
-WORKDIR /usr/app
+USER root
+RUN mkdir -p /usr/app/frontend
+WORKDIR /usr/app/frontend
 COPY package.json .
-COPY angular.json .
 RUN npm install 
-RUN npm install @angular/cli
 COPY . .
 EXPOSE 4200
-RUN ng serve
+RUN npm start

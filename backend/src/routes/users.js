@@ -27,7 +27,7 @@ router.post('/register', bodyParser.json(),
 	{
 		var exist = true;
 		var total_token = 0;
-		var new_token = Math.floor(Math.random()*5);
+		var new_token = Math.floor(Math.random()*500000);
 		console.log("token: "+ new_token);
 		
 		//while(exist){

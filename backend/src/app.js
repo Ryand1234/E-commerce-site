@@ -5,10 +5,12 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 
-var productRouter = require('./routes/product');
+var productRouter = require('./routes/products/product');
+var allProductRouter = require('./routes/products/all_products');
+var oneProductRouter = require('./routes/products/one_products');
 var usersRouter = require('./routes/users');
 var cartRouter = require('./routes/user_cart');
-var data = require('./routes/database');
+
 
 var app = express();
 
@@ -23,9 +25,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/product', productRouter);
+app.use('/product/search', oneProductRouter);
 app.use('/users', usersRouter);
 app.use('/cart', cartRouter);
-app.use('/show',data);
+app.use('/all-prod',allProductRouter);
+
+
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost:5000/ecommerce",{ useUnifiedTopology: true, useNewUrlParser: true}, (err,db)=>{
 	if(err){
