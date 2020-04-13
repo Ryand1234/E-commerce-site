@@ -29,12 +29,12 @@ Required
 Return 
 `JSON data of All products`
 
-### Show all Products
+### Find a Products
 End Point GET 
 
-`/product/:token`
+`/product/search/:token`
 
-`token: code attached with the product`
+`token: product name`
 
 Required
 
@@ -42,7 +42,7 @@ Required
 
 Return 
 
-`JSON data of the products`
+`JSON data of the product`
 
 ## For User Login and Register
 ### Register
