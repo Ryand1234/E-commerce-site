@@ -20,7 +20,7 @@ export class HomeService {
 
 
   register(data: Person ){
-	console.log("Service: ",data.username);	
+	
 //return this.http.post(this.url, {'username': 'riyan', 'email':'riyan@gmail.com', 'password':'riyan123455', 'number': '9874563215'});
 	return this.http.post(this.url, data);
 	}

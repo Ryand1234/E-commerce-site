@@ -8,9 +8,10 @@ var mongoose = require('mongoose');
 var productRouter = require('./routes/products/product');
 var allProductRouter = require('./routes/products/all_products');
 var oneProductRouter = require('./routes/products/one_products');
-var usersRouter = require('./routes/users');
+var registerRouter = require('./routes/user/register');
 var cartRouter = require('./routes/user_cart');
-
+var loginRouter = require('./routes/user/login');
+var profileRouter = require('./routes/user/profile');
 
 var app = express();
 
@@ -26,7 +27,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/product', productRouter);
 app.use('/product/search', oneProductRouter);
-app.use('/users', usersRouter);
+app.use('/users/register', registerRouter);
+app.use('/users/login', loginRouter)
+app.use('/users', profileRouter)
 app.use('/cart', cartRouter);
 app.use('/all-prod',allProductRouter);
 

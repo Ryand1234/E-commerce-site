@@ -1,1 +1,28 @@
-<p>profile works!</p>
+<h3>Profile Information</h3>
+<table *ngIf="(userinfo)">
+	<tr>
+		<th>Index</th>
+		<th>Detail</th>
+	</tr>
+	<tr>
+		<th>Name</th>
+		<th>{{userinfo.name}}</th>
+	</tr>
+	<tr>
+		<th>Mobile Number</th>
+		<th>{{userinfo.number}}</th>
+	</tr>
+	<tr> 
+		<th>DOB</th>
+		<th>{{userinfo.dob}}</th>
+	</tr>
+	<tr> 
+		<th>Gender</th>
+		<th>{{userinfo.sex}}</th>
+	</tr>
+	<tr>
+		<th>Email</th>
+		<th>{{userinfo.email}}</th>
+	</tr>
+</table>
+

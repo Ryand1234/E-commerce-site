@@ -1,1 +1,25 @@
-<p>login works!</p>
+<mat-card class="login">
+	<h3>Login</h3>
+	<mat-card-content>
+		<div class="log-details">
+			<form class="log-details-form" (ngSubmit)="onSubmit()" [formGroup]="User">
+				<mat-form-field>
+					<input matInput formControlName="email" placeholder="Email" type="text">
+				</mat-form-field>
+				<br>
+				<mat-form-field>
+					<input matInput formControlName="password" placeholder="Password" type="password">
+				</mat-form-field>
+				<br>
+				<mat-form-field>
+					<button>Login</button>
+				</mat-form-field>
+			</form>
+		</div>
+	</mat-card-content>
+</mat-card>
+
+<div *ngIf=(token.token)>
+                <button mat-Button routerLink="/profile/{{token.token}}">Profile</button>
+</div>
+<router-outlet></router-outlet>

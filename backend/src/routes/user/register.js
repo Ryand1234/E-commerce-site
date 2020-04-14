@@ -2,13 +2,13 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose')
 var {check, validationResult} = require('express-validator');
-var {User, product, userschema} = require("../config/User.js");
+var {User, product, userschema} = require("../../config/User.js");
 var mongo = require('mongodb');
 var bodyParser = require('body-parser');
 
-router.post('/register', bodyParser.json(), 
+router.post('/', bodyParser.json(), 
 [
-  check('username').isLength({min: 3}),
+  check('name').isLength({min: 3}),
   check('email').isLength({min: 1}).isEmail(),
   check('password').isLength({min: 6}),
   check('number').isLength({min:10, max:10}).isNumeric(),
@@ -38,8 +38,10 @@ router.post('/register', bodyParser.json(),
 			//	break;
 			}*/
 		nuserinfo = {}
-		nuserinfo.accessToken = new_token;
-		nuserinfo.username = req.body.username;
+		nuserinfo.accessToken = new_token.toString(10);
+		nuserinfo.name = req.body.name;
+		nuserinfo.sex = req.body.sex;
+		nuserinfo.dob = req.body.dob;
 		nuserinfo.email = req.body.email;
 		nuserinfo.password = req.body.password;
 		nuserinfo.number = req.body.number;
@@ -48,7 +50,6 @@ router.post('/register', bodyParser.json(),
 		mongo.MongoClient.connect('mongodb://localhost:5000',(error, client)=>{
 			if(error) throw(error)
 
-			console.log("HELLO");
 			var db = client.db('ecommerce');
 	//		while(exist){
 			
@@ -79,24 +80,6 @@ router.post('/register', bodyParser.json(),
 	}
 	
 
-});
-
-router.get('/login', async (req, res, next)=> {
-
-	const email = req.body.email;
-	const password = req.body.password;
-
-	User.findOne({email: email, password: password}, (err,user)=>{
-		if(err)
-		{
-			console.log(err);
-			res.status(401).json({'msg': "Email/Password is incorrect"});
-		}
-		else
-		{
-			res.status(200).json({'token': user.accessToken});
-		}
-	});
 });
 
 module.exports = router;

@@ -5,7 +5,7 @@
 	<div class="register-form">
 	<form (ngSubmit)="onSubmit()" [formGroup]="person" >
 		<mat-form-field>
-			<input  matInput formControlName="username" type="text" name="username" placeholder="Username">
+			<input  matInput formControlName="name" type="text" name="name" placeholder="Name">
 		</mat-form-field>
 		<br>
 		<mat-form-field>
@@ -19,6 +19,14 @@
 		<mat-form-field>
 			<input matInput formControlName="number" type="text" name="mobile" placeholder="Mobile Number" required>
 		</mat-form-field>
+		<br>
+		 <mat-form-field>
+                        <input  matInput formControlName="dob" type="text" name="dob" placeholder="DOB">
+                </mat-form-field>
+		<br>
+		 <mat-form-field>
+                        <input  matInput formControlName="sex" type="text" name="sex" placeholder="Gender">
+                </mat-form-field>
 		<br>
 		<mat-form-field>
 			<button >submit</button>

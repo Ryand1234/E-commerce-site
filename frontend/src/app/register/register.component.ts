@@ -14,21 +14,23 @@ export class RegisterComponent{
 
 	//person = new Person('', '', '', '');
 	person =  new FormGroup({
-	username : new FormControl(''),
+	name : new FormControl(''),
 	email : new FormControl(''),
 	password : new FormControl(''),
-	number : new FormControl('')
+	number : new FormControl(''),
+	dob : new FormControl(''),
+	sex : new FormControl('')
 	});
 
 	status: any;
 	
 	constructor(private service: HomeService) { }
 	onSubmit(){
-		console.log(this.person.controls.email.value);
-		var user = new Person(this.person.controls.username.value, this.person.controls.email.value, this.person.controls.number.value, this.person.controls.password.value);
-		console.log("PERSON: ",user);
-		this.service.register(user).subscribe((msg: any) => {	this.status = (typeof msg)},(err) => { console.log('error is: ',err)});
-		console.log("MESSAGE: ",this.status);	
+
+		var user = new Person(this.person.controls.name.value, this.person.controls.email.value, this.person.controls.number.value, this.person.controls.password.value, this.person.value.dob, this.person.value.sex);
+
+		this.service.register(user).subscribe((msg: any) => {	this.status = msg},(err) => { console.log('error is: ',err)});
+
 }
 
 }
