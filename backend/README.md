@@ -56,7 +56,9 @@ Required
   username: username,
   email: email,
   password: password,
-  number: number
+  number: number,
+  gender: gender,
+  dob: dob
 }
 ```
 
@@ -78,42 +80,57 @@ Return JSON
 
 ```
 {
-  accessToken: accessToken
+  msg: logout successfull
 }
 ```
 
-The access point returned will be used to access authenticated routes.
+The access point will be saved in session and will be used to access authenticated routes.
+
+### Logout
+End Point 
+
+`/user/logout`
+
+Required 
+
+`Nothing`
+
+Return
+
+```
+{
+  msg: Logout Successfull
+}
+```
+
 
 ## For User Cart
 ### Addition of Product
 End Point GET
 
-`/cart/utoken/product/add/ptoken`
+`/cart/add/ptoken`
 
 Require
-`utoken: Access token assigned to a user.`
 
 `ptoken: code attached with the product`
 
 ### Removal of Product
 End Point GET
 
-`/cart/utoken/product/remove/ptoken`
+`/cart/remove/ptoken`
 
 Require
-
-`utoken: Access token assigned to a user.`
 
 `ptoken: code attached with the product`
 
 ### All Products in Cart
 End Point GET 
 
-`/cart/utoken/all`
+`/cart/all`
 
 Require 
 
-`utoken: Access token assigned to a user`
+`Nothing`
 
 Return
 
@@ -122,11 +139,11 @@ Return
 ### Checkout
 End Point GET
 
-`/cart/utoken/checkout`
+`/cart/checkout`
 
 Require 
 
-`utoken: Access token assigned to a user`
+`Nothing`
 
 Return 
 
