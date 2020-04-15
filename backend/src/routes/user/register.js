@@ -45,6 +45,10 @@ router.post('/', bodyParser.json(),
 		nuserinfo.email = req.body.email;
 		nuserinfo.password = req.body.password;
 		nuserinfo.number = req.body.number;
+		nuserinfo.cart = {
+				productname : new Array(),
+				productdetail : new Array()
+			};
 		console.log(nuserinfo);
 
 		mongo.MongoClient.connect('mongodb://localhost:5000',(error, client)=>{

@@ -1,4 +1,8 @@
+
 <h3>Profile Information</h3>
+<p *ngIf=(msg)>Please Login to see yout Cart</p>
+<h4 *ngIf=(userinfo.msg)>{{userinfo.msg}}</h4>
+
 <table *ngIf="(userinfo)">
 	<tr>
 		<th>Index</th>

@@ -14,12 +14,13 @@ export class ProfileComponent implements OnInit {
   constructor(private service : ProfileService,
   			private router : Router) { }
 
-  ngOnInit() {
-	
-	var url = this.router.url;
-	var token = url.split('/')[2]
-	
-	this.service.getProfile(token).subscribe((result)=>{ this.userinfo = result},(error)=>{console.log("ERROR: ",error)});
+  		msg: any;
+
+  ngOnInit(){
+
+	this.service.getProfile().subscribe((result)=>{ this.userinfo = result}, (error)=>{
+  this.msg = error
+  });
 	
 	}
 

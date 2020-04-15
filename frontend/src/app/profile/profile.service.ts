@@ -6,12 +6,10 @@ import { HttpClient } from '@angular/common/http'
 })
 export class ProfileService {
 
-	private url = '/api/users/';
+	private url = '/api/users';
   constructor(private  http : HttpClient) { }
 
-	getProfile(token: string){
-		var new_url = this.url + token;
-		console.log("URL: ",new_url);	
-	return this.http.get(new_url);
+	getProfile(){
+	return this.http.get(this.url);
 	}
 }

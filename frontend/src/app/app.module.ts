@@ -20,7 +20,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddComponent } from './products/add/add.component';
-import { SearchComponent } from './products/search/search.component'
+import { SearchComponent } from './products/search/search.component';
+import { RemoveComponent } from './cart/remove/remove.component';
+import { CheckoutComponent } from './cart/checkout/checkout.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { SearchComponent } from './products/search/search.component'
     RegisterComponent,
     ProductsComponent,
     AddComponent,
-    SearchComponent
+    SearchComponent,
+    RemoveComponent,
+    CheckoutComponent,
+    LogoutComponent
   ],
   imports: [
     HttpClientModule,
@@ -47,7 +53,7 @@ import { SearchComponent } from './products/search/search.component'
     MatToolbarModule,
 	ReactiveFormsModule
   ],
-  providers: [],
+  providers: [LoginComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

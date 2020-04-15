@@ -1,15 +1,16 @@
-h3 {
+h3{
 	text-align: center;
+}
+
+.msg {
+	text-align: center;
+	color: red;
 }
 
 h4 {
 	text-align: center;
 }
 
-div {
-	text-align: center;
-}
-
-tr {
+button {
 	text-align: center;
 }

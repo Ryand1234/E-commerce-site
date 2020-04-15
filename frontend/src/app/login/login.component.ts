@@ -16,17 +16,26 @@ export class LoginComponent {
 	});
 
 	token: any;
-	url = "/profile/";
+
+	get getToken(): string {
+		return this.token.token;
+	}
 
   constructor(private service: LoginService) { }
 
 	onSubmit(){
-		var user = new UserLogin(this.User.value.email, this.User.value.password);
-		this.service.login(user).subscribe((result)=>{
-		this.token = result},(error)=>{console.log("Error: ",error)});
+
+		var user = new UserLogin(this.User.value.email,this.User.value.password);
+		this.service.login(user).subscribe((result)=> {
 		
-		
+		this.token = result;
+
+		},(error)=>{console.log("Error: ",error)});
+
+	
+
 	}
+
 
 
 }

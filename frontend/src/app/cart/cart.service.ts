@@ -5,16 +5,15 @@ import { Product } from '../product'
 @Injectable({
   providedIn: 'root'
 })
-export class ShowProdService {
-
-	private url = "/api/all-prod";
-
+export class CartService {
+	
+	private url = '/api/cart/all'
+  
   constructor(private http: HttpClient) { }
 
-	getProduct() {
+  	getCart() {
 
-		return this.http.get<Product>(this.url);
-
-			}
-
+  		return this.http.get<Product>(this.url);
+  	
+  	}
 }

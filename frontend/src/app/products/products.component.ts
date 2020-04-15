@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ShowProdService } from './show-prod.service';
+import { AddToCartService } from './add-to-cart.service';
 import { Product } from '../product'
 
 @Component({
@@ -10,16 +11,22 @@ import { Product } from '../product'
 export class ProductsComponent implements OnInit {
 
 	products : Product;
-  constructor(private service: ShowProdService) { }
+  constructor(private showService: ShowProdService,
+  				private cartService: AddToCartService) { }
 
  ngOnInit() {
-	this.service.getProduct().subscribe((result) => {
+	this.showService.getProduct().subscribe((result) => {
 
 		this.products = result}, (err) => { console.log("ERROR: ",err) } );
 
 	}
 
-
+	status: any;
+	add(token: string){
+		this.cartService.addtocart(token).subscribe((result) => {
+			this.status = result
+			console.log("STATUS: ",this.status)});
+	}
 	
 
 }

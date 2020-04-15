@@ -5,6 +5,7 @@ var {check, validationResult} = require('express-validator');
 var {User, product, userschema} = require("../../config/User.js");
 var mongo = require('mongodb');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 router.post('/', async (req, res, next)=> {
 
@@ -21,12 +22,13 @@ router.post('/', async (req, res, next)=> {
 		
 		if(err) {
 			
-			res.status(200).json({'msg': "Email/Password is incorrect"});
+			res.status(200).json({'msg': "Email/Pasword is incorrect"});
 
 		}
 		
 		if(user != null) {
 
+			req.session.accessToken = user.accessToken;
 			res.status(200).json({'token': user.accessToken});
 		
 		} else {

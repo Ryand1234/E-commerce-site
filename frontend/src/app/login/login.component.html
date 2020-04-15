@@ -19,7 +19,12 @@
 	</mat-card-content>
 </mat-card>
 
+<div *ngIf="(token)">
+	<p>Token: {{token.token}}</p>
+	<p>Msg: {{token.msg}}</p>
+</div>
+
 <div *ngIf=(token.token)>
-                <button mat-Button routerLink="/profile/{{token.token}}">Profile</button>
+    <button mat-Button routerLink="/profile">Profile</button>
 </div>
 <router-outlet></router-outlet>
