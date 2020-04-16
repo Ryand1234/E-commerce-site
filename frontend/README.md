@@ -4,11 +4,29 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. 
 
-## Code scaffolding
+## Paths
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+`/login` takes to login page.
+
+`/register` takes you to registration page.
+
+`/profile` shows user profile.
+
+`/logout` takes to logout page.
+
+`/product` shows all products present in database.
+
+`/product/add` allows to add new products.
+
+`/product/search` allows to search product by name.
+
+`/cart` shows user cart.
+
+`/cart/remove` shows all the products in user cart with option to delete products.
+
+`/cart/checkout` shows all products and total price of the products
 
 ## Build
 
