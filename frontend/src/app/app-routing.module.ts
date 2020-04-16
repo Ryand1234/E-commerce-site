@@ -5,6 +5,8 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { CartComponent } from './cart/cart.component';
+import { RemoveComponent } from './cart/remove/remove.component';
+import { CheckoutComponent } from './cart/checkout/checkout.component';
 import { ProductsComponent } from './products/products.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AboutComponent } from './about/about.component';
@@ -18,6 +20,8 @@ const routes: Routes = [
 { path: 'login', component: LoginComponent },
 { path: 'logout', component: LogoutComponent },
 { path: 'cart', component: CartComponent },
+{ path: 'cart/checkout', component: CheckoutComponent },
+{ path: 'cart/remove', component: RemoveComponent },
 { path: 'profile', component: ProfileComponent },
 { path: 'product', component: ProductsComponent },
 { path: 'product/add', component: AddComponent },

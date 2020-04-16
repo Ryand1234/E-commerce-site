@@ -40,7 +40,7 @@ router.get('/:ptoken', async (req, res, next)=> {
 								}}
 								db.collection('users').updateOne({accessToken: req.session.accessToken}, query, (err, update)=>{
 									if(err) throw(err)
-									res.status(200).send("Product Added");		
+									res.status(200).json("Product Added");		
 								});
 								
 					
@@ -64,36 +64,14 @@ router.get('/:ptoken', async (req, res, next)=> {
 								
 								db.collection('users').updateOne({accessToken: req.session.accessToken}, query, (err, update)=>{
 									if(err) throw(err)
-									res.status(200).send("Product Added");		
+									res.status(200).json("Product Added");		
 								});
-/*							var prodlist = cuser.cart.productdetail;
-							for(var i=0;i<prodlist.length;i++)
-							{
-								var index;
-								if (prod.accessToken == prodlist[i].accessToken)
-								{
-									prodlist[i].number = req.body.num;
-								}
-							}
+						} else {
+				
+								res.status(200).json("Product Already added")
+				
 						}
-						else{
-
-							var prodlist = cuser.cart.productdetail;
-							for(var i=0;i<prodlist.length;i++)
-							{
-								var index;
-								if (prod.accessToken == prodlist[i].accessToken)
-								{
-									prodlist[i].number = parseInt(prodlist[i].number) + parseInt(req.body.num);
-								}
-							}
-						}
-*/						
-					//	cuser.save();
-						//res.status(200).send("Product Added");
-						
 					}
-						}
 						
 				}
 			});
